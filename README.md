@@ -1,1 +1,6 @@
-# task4
+🛒 Amazon Product Scraper - Python
+This Python script is designed to scrape product details—including names, prices, and ratings—from Amazon search result pages. It utilizes requests and BeautifulSoup for web scraping, and implements random User-Agent rotation to help bypass basic bot detection mechanisms and reduce the likelihood of being blocked.
+
+The script initializes a list of User-Agent strings that simulate requests from different browsers. For every HTTP request, one User-Agent is randomly selected to mimic human browsing behavior. The fetch_products() function takes a product search URL as input, sends a GET request, and checks for a successful response. If the response status code is not 200, the function logs an error and returns an empty list.
+
+On successful response, the HTML is parsed using BeautifulSoup. The scraper targets s-search-result <div> elements that typically contain product data on Amazon’s results page. It extracts each product’s name, rating, and price—combining the whole and fractional parts to form the full price. If any piece of information is missing, it gracefully marks it as "N/A". The script is wrapped in a try-except block to catch and handle parsing errors without halting execution. The final output is a list of dictionaries containing clean product data, ready for further processing, exporting to CSV, or loading into a DataFrame.
